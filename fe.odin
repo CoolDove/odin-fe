@@ -3,7 +3,7 @@ package fe
 import "core:c"
 import "core:c/libc"
 
-foreign import fe "fe-windows-x86-msvc.lib"
+foreign import fe "fe-windows-x64-msvc.lib"
 
 @(default_calling_convention = "c")
 @(link_prefix = "fe_")
