@@ -12,7 +12,7 @@ foreign fe {
     close :: proc(ctx:^Context ) ---;
     handlers :: proc(ctx:^Context) -> ^Handlers ---;
     error :: proc(ctx:^Context, msg: cstring) ---;
-    nextarg :: proc(ctx:^Context, arg:[^]^Object) -> ^Object ---;
+    nextarg :: proc(ctx:^Context, arg:^^Object) -> ^Object ---;
     type :: proc(ctx:^Context, obj:^Object) -> c.int ---;
     isnil :: proc(ctx:^Context, obj:^Object) -> c.int ---;
     pushgc :: proc(ctx:^Context, obj:^Object) ---;
@@ -67,7 +67,7 @@ Handlers :: struct {
 ErrorFn :: #type proc "c" (ctx:^Context, err:cstring, cl:^Object)
 WriteFn :: #type proc "c" (ctx:^Context, udata:rawptr, chr: c.char)
 ReadFn  :: #type proc "c" (ctx:^Context, udata:rawptr) -> c.char
-CFunc   :: #type proc "c" (ctx:^Context, args: [^]Object) -> ^Object
+CFunc   :: #type proc "c" (ctx:^Context, args: ^Object) -> ^Object
 
 Object :: struct #raw_union {
     o: ^Object,
